@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" href="https://rule.animertr.com/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
       
 <meta property="og:type" content="website">
 <meta content='Catalogo' property='og:title'/>
-<meta content='https://rule.animertr.com/catalogo' property='og:url'/>
+<meta content='https://hentai.sitiosrtr.com/catalogo' property='og:url'/>
 <meta content='article' property='og:type'/>
-<meta content='RuleRTR' property='og:site_name'/>
-<meta content='El catalogo de Rule más eficiente de toda latinoamerica sin anuncios' property='og:description'/>
+<meta content='HentaiRTR' property='og:site_name'/>
+<meta content='El catalogo de Hentai más eficiente de toda latinoamerica sin anuncios' property='og:description'/>
 <meta content='' property='og:image'/>
 <meta content='es_ES' property='og:locale'/>
 <meta content='en_US' property='og:locale:alternate'/>
@@ -85,7 +85,7 @@
 
   <div class="search-input-wrap">
     <i class="fa fa-search"></i>
-    <input type="text" id="searchInput" placeholder="Buscar rule..." />
+    <input type="text" id="searchInput" placeholder="Buscar hentai..." />
   </div>
   <!-- BOTÓN FILTROS -->
   <a href="/catalogo/" class="filter-btn">
@@ -121,18 +121,50 @@
 
 <!-- MENÚ -->
 <div id="menu">
+  <div class="menu-profile">
+    <div class="menu-profile-bg"></div>
+
+    <button class="menu-profile-help" id="menuProfileHelp" type="button" onclick="toggleMenuInstructions(event)" aria-label="Ver instrucciones" aria-expanded="false">
+      <i class="fa fa-exclamation"></i>
+    </button>
+
+    <div class="menu-instructions-panel" id="menuInstructionsPanel" aria-hidden="true">
+      <strong>Instrucciones</strong>
+      <span>Configura tu nombre desde Biblioteca.</span>
+      <span>Toca la foto para cambiar tu perfil.</span>
+      <span>Todo se guarda solo en este dispositivo.</span>
+    </div>
+ 
+    <button class="menu-profile-avatar" id="profilePreview" type="button" onclick="openProfilePanel()" aria-label="Ver perfil">
+      <img id="profilePreviewImg" alt="Foto de perfil">
+      <i class="fa fa-user"></i>
+    </button>
+
+    <div class="menu-profile-info">
+      <p class="menu-profile-kicker">Biblioteca local</p>
+      <p class="menu-profile-title" id="menuLibraryName">Mi biblioteca</p>
+      <p class="menu-profile-subtitle" id="menuLibrarySubtitle">Instrucciones en ‹!›</p>
+    </div>
+
+    <a class="menu-profile-library" href="/biblioteca">
+      <i class="fa fa-bookmark"></i>
+      <span>Ver mi biblioteca</span>
+    </a>
+
+    <input class="profile-file-input" id="profileImageInput" type="file" accept="image/*">
+  </div>
+
   <div class="menu-links">
     <a href="/"><i class="fa fa-home"></i>Inicio</a>
     <a href="/assets/link/Anime"><i class="fa fa-play-circle"></i>Anime</a>
     <a href="/assets/link/Hentai"><i class="fa fa-heart"></i>Hentai</a>
     <a href="/assets/link/Doujins"><i class="fa fa-book"></i>Doujins</a>
     <a href="/assets/link/Rule34"><i class="fa fa-fire"></i>Rule34</a>
-    <a href="/assets/link/ErogeGames"><i class="fa fa-gamepad"></i>Eroge Games</a>
+    <a href="/assets/link/ErogeGames"><i class="fa fa-gamepad"></i>EroGames</a>
     <a href="/assets/link/DMCA"><i class="fa fa-ban"></i>DMCA</a>
     <a href="/assets/link/Contacto"><i class="fa fa-envelope"></i>Contacto</a>
     <a href="/assets/link/Donar"><i class="fa fa-paypal"></i>Donar</a>
     <a href="/assets/link/Donar"><i class="fa fa-gift"></i>Membresias</a>
-    <a href="/biblioteca"><i class="fa fa-bookmark"></i>Mis Guardados</a>
   </div>
 
   <div class="menu-social">
@@ -143,7 +175,37 @@
     <a href="/assets/link/Donar" title="Donar"><i class="fa fa-paypal"></i></a>
   </div>
 </div>
- 
+    
+ <div id="profilePanel" class="profile-panel" aria-hidden="true">
+  <div class="profile-panel-backdrop" onclick="closeProfilePanel()"></div>
+
+  <div class="profile-card" role="dialog" aria-modal="true" aria-label="Perfil local">
+    <button class="profile-card-close" type="button" onclick="closeProfilePanel()" aria-label="Cerrar">
+      <i class="fa fa-times"></i>
+    </button>
+
+    <div class="profile-card-glow"></div>
+
+    <div class="profile-card-avatar" id="profilePanelPreview">
+      <img id="profilePanelImg" alt="Foto de perfil grande">
+      <i class="fa fa-user"></i>
+    </div>
+
+    <h3 id="profilePanelTitle">Mi biblioteca</h3>
+    <p id="profilePanelSubtitle">Personaliza tu biblioteca en este dispositivo.</p>
+
+    <div class="profile-card-actions">
+      <button type="button" onclick="triggerProfileImagePicker()">
+        <i class="fa fa-camera"></i> Cambiar foto
+      </button>
+      <button type="button" class="danger" onclick="removeProfileImage()">
+        <i class="fa fa-trash"></i> Quitar
+      </button>
+    </div>
+
+  </div>
+</div>
+
 </header>
    
 
