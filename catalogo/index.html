@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="https://rule.animertr.com/favicon.ico" type="image/x-icon">
+      
+<meta property="og:type" content="website">
+<meta content='Catalogo' property='og:title'/>
+<meta content='https://rule.animertr.com/catalogo' property='og:url'/>
+<meta content='article' property='og:type'/>
+<meta content='RuleRTR' property='og:site_name'/>
+<meta content='El catalogo de Rule más eficiente de toda latinoamerica sin anuncios' property='og:description'/>
+<meta content='' property='og:image'/>
+<meta content='es_ES' property='og:locale'/>
+<meta content='en_US' property='og:locale:alternate'/>
+<meta content='en_GB' property='og:locale:alternate'/>
+<meta content='Catalogo' name='twitter:title'/>
+<meta content='USARIO-TWITTER' name='twitter:site'/>
+<meta content='USARIO-TWITTER' name='twitter:creator'/>
+<meta content='summary_large_image' name='twitter:card'/>
+
+  
+<!-- CSS Style Configuracion -->
+  <link rel="stylesheet" href="/assets/css/loader.css">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/css/copiar.css">
+
+<!-- JS prioridad Configuracion -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script src="/assets/js/Onesignalpush.js" defer></script>
+<script src="/assets/js/loader.js" defer></script>
+  
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title> Catalogo </title>
+
+</head>
+  <body>
+
+<!-- LOADER SIMPLE (espera TODO) -->
+<div id="loader">
+  <div class="loader-box">
+    <div class="loader-bar">
+      <span></span>
+    </div>
+  </div>
+</div>
+    
+<header class="header">
+  <div class="header-container">
+    
+<!-- LOGO IZQUIERDA -->
+<div class="logo">
+  <a href="/">
+    <img src="/assets/img/logo.webp">
+  </a>
+</div>
+
+  <!-- DERECHA -->
+  <div class="actions">
+  <!-- 🔔 CAMPANA -->
+  <button class="icon-btn" id="notifToggle">
+    <i class="fa fa-bell-slash" id="bellIcon"></i>
+  </button>
+  <!-- 🔍 BUSCADOR -->
+  <button class="icon-btn" onclick="abrirBusqueda()">
+    <i class="fa fa-search"></i>
+  </button>
+  <!-- ☰ MENU -->
+  <button class="icon-btn" onclick="toggleMenu()">
+    <i class="fa fa-bars"></i>
+  </button>
+  </div>
+
+<div id="searchBar">
+ <div class="search-container">
+
+  <div class="search-input-wrap">
+    <i class="fa fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Buscar rule..." />
+  </div>
+  <!-- BOTÓN FILTROS -->
+  <a href="/catalogo/" class="filter-btn">
+    <i class="fa fa-sliders"></i>
+    <span>Filtros</span>
+  </a>
+  <!-- TU BOTÓN X -->
+  <button onclick="cerrarBusqueda()">
+    <i class="fa fa-times"></i>
+  </button>
+
+</div>
+</div>
+
+<!-- WARNING -->
+<div id="notifWarning">
+  <span class="close" id="closeWarning">✖</span>
+  <p style="margin:5px 0;">🔕 Notificaciones bloqueadas</p>
+  <a href="https://media.onesignal.com/web-sdk/bell/edge-unblock.png" target="_blank">
+    <img src="https://media.onesignal.com/web-sdk/bell/edge-unblock.png">
+  </a>
+</div>
+
+<!-- TOAST -->
+<div id="notifToast">
+  <span class="close" id="closeToast">✖</span>
+  <p id="toastText" style="margin:5px 0;"></p>
+</div>
+        
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<!-- MENÚ -->
+<div id="menu">
+  <div class="menu-links">
+    <a href="/"><i class="fa fa-home"></i>Inicio</a>
+    <a href="/assets/link/Anime"><i class="fa fa-play-circle"></i>Anime</a>
+    <a href="/assets/link/Hentai"><i class="fa fa-heart"></i>Hentai</a>
+    <a href="/assets/link/Doujins"><i class="fa fa-book"></i>Doujins</a>
+    <a href="/assets/link/Rule34"><i class="fa fa-fire"></i>Rule34</a>
+    <a href="/assets/link/ErogeGames"><i class="fa fa-gamepad"></i>Eroge Games</a>
+    <a href="/assets/link/DMCA"><i class="fa fa-ban"></i>DMCA</a>
+    <a href="/assets/link/Contacto"><i class="fa fa-envelope"></i>Contacto</a>
+    <a href="/assets/link/Donar"><i class="fa fa-paypal"></i>Donar</a>
+    <a href="/assets/link/Donar"><i class="fa fa-gift"></i>Membresias</a>
+    <a href="/biblioteca"><i class="fa fa-bookmark"></i>Mis Guardados</a>
+  </div>
+
+  <div class="menu-social">
+    <a href="/assets/link/Twitter" title="X/Twitter"><i class="fa fa-twitter"></i></a>
+    <a href="/assets/link/WhatsApp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+    <a href="/assets/link/Facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+    <a href="/assets/link/YouTube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+    <a href="/assets/link/Donar" title="Donar"><i class="fa fa-paypal"></i></a>
+  </div>
+</div>
+ 
+</header>
+   
+
+<!-- JS Script Configuracion -->
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/zoom.js"></script>
+  <script src="script.js" defer></script>
+
+
+
+
+
+
+    
+
+      
+<!-- AQUI COMIENZA EL HTML NORMAL CON JS NORMAL -->
+  <div class="page">
+    <div class="catalog-header-wrap">
+      <div class="catalog-header-top">
+        <div class="catalog-header-left">
+          <h1 class="catalog-title">Catalogo</h1>
+
+          <div id="searchChip" class="search-chip" style="display:none;">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10.5 3a7.5 7.5 0 1 1 0 15a7.5 7.5 0 0 1 0-15zm0 2a5.5 5.5 0 1 0 0 11a5.5 5.5 0 0 0 0-11zm8.9 12.5l2.6 2.6l-1.4 1.4l-2.6-2.6z"/>
+            </svg>
+            <span id="searchChipText"></span>
+          </div>
+
+          <div class="catalog-header-right">
+            <div class="catalog-meta">
+              <strong id="resultadoCantidad">0</strong>
+              <span>Resultados</span>
+            </div>
+
+            <button class="catalog-filter-btn" id="openFiltersBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16v2H4V7zm3 5h10v2H7v-2zm3 5h4v2h-4v-2z"/>
+              </svg>
+              <span>Filtros</span>
+              <span id="filterCountBadge" class="filter-count-badge" style="display:none;">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-modal-backdrop" id="filterModalBackdrop"></div>
+
+    <div class="filter-modal" id="filterModal" aria-hidden="true">
+      <div class="filter-modal-box">
+        <div class="filter-modal-header">
+          <h2>Filtrar</h2>
+          <button type="button" class="filter-close-btn" id="closeFiltersBtn" aria-label="Cerrar">×</button>
+        </div>
+
+        <form id="filterForm">
+          <div class="filter-block">
+  <div class="select-box">
+    <button type="button" class="select-display" id="toggleGenresBtn">
+      <span class="label-soft">Géneros:</span>
+      <span class="value-strong" id="genresSummary">Seleccionar</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+
+    <div class="select-panel" id="genrePanel"></div>
+  </div>
+</div>
+
+<div class="filter-block">
+  <div class="select-box">
+    <button type="button" class="select-display" id="toggleCategoriasBtn">
+      <span class="label-soft">Categoría:</span>
+      <span class="value-strong" id="categoriasSummary">Seleccionar</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+
+    <div class="select-panel" id="categoriasPanel">
+      <div class="select-search-wrap">
+        <input type="text" id="categoriasSearch" class="select-search" placeholder="Buscar categoría...">
+      </div>
+      <div id="categoriasOptions"></div>
+    </div>
+  </div>
+</div>
+
+<div class="filter-block">
+  <div class="select-box">
+    <button type="button" class="select-display" id="toggleAutoresBtn">
+      <span class="label-soft">Autor:</span>
+      <span class="value-strong" id="autoresSummary">Seleccionar</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+
+    <div class="select-panel" id="autoresPanel">
+      <div class="select-search-wrap">
+        <input type="text" id="autoresSearch" class="select-search" placeholder="Buscar autor...">
+      </div>
+      <div id="autoresOptions"></div>
+    </div>
+  </div>
+</div>
+
+<div class="filter-block">
+  <div class="select-box">
+    <button type="button" class="select-display" id="togglePersonajesBtn">
+      <span class="label-soft">Personajes:</span>
+      <span class="value-strong" id="personajesSummary">Seleccionar</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+
+    <div class="select-panel" id="personajesPanel">
+      <div class="select-search-wrap">
+        <input type="text" id="personajesSearch" class="select-search" placeholder="Buscar personaje...">
+      </div>
+      <div id="personajesOptions"></div>
+    </div>
+  </div>
+</div>
+          
+<!--
+<div class="filter-block">
+  <div class="select-box">
+    <button type="button" class="select-display" id="toggleEstadoBtn">
+      <span class="label-soft">Estado:</span>
+      <span class="value-strong" id="estadoSummary">Seleccionar</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+
+    <div class="select-panel" id="estadoPanel">
+      <label class="option-row">
+        <input type="radio" name="estado" value="">
+        <span class="radio-ui"></span>
+        <span>Seleccionar</span>
+      </label>
+      <label class="option-row">
+        <input type="radio" name="estado" value="finalizado">
+        <span class="radio-ui"></span>
+        <span>Finalizado</span>
+      </label>
+      <label class="option-row">
+        <input type="radio" name="estado" value="emision">
+        <span class="radio-ui"></span>
+        <span>En emisión</span>
+      </label>
+    </div>
+  </div>
+</div>-->
+
+<div class="filter-block">
+  <div class="select-box">
+    <button type="button" class="select-display" id="toggleIdiomaBtn">
+      <span class="label-soft">Idioma:</span>
+      <span class="value-strong" id="idiomaSummary">Seleccionar</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+
+    <div class="select-panel" id="idiomaPanel">
+      <label class="option-row">
+        <input type="radio" name="idioma" value="">
+        <span class="radio-ui"></span>
+        <span>Seleccionar</span>
+      </label>
+      <label class="option-row">
+        <input type="radio" name="idioma" value="sub">
+        <span class="radio-ui"></span>
+        <span>Subtitulado</span>
+      </label>
+      <label class="option-row">
+        <input type="radio" name="idioma" value="latino">
+        <span class="radio-ui"></span>
+        <span>Latino</span>
+      </label> 
+    </div>
+  </div>
+</div>
+
+<label class="filter-check-row">
+  <input type="checkbox" id="sinCensuraCheck">
+  <span class="check-ui"></span>
+  <span>Sin censura</span>
+</label>
+
+<div class="filter-actions">
+  <button type="button" id="resetFiltros" class="btn-reset">Reiniciar</button>
+  <button type="submit" class="apply-filter-btn">Filtrar</button>
+</div>
+        </form>
+      </div>
+    </div>
+
+    <div id="resultados" class="container"></div>
+    <div id="paginacion"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
