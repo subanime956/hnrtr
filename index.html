@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="https://rule.sitiosrtr.com/favicon.ico" type="image/x-icon">
+      
+<meta property="og:type" content="website">
+<meta content='R34 Online | Rule.SitiosRTR.com' property='og:title'/>
+<meta content='https://rule.sitiosrtr.com' property='og:url'/>
+<meta content='article' property='og:type'/>
+<meta content='RuleRTR' property='og:site_name'/>
+<meta content='Página para ver Rule34 sin anuncios gratis y descargas directas.' property='og:description'/>
+<meta content='https://rule.sitiosrtr.com/assets/img/portada.webp' property='og:image'/>
+<meta content='es_ES' property='og:locale'/>
+<meta content='en_US' property='og:locale:alternate'/>
+<meta content='en_GB' property='og:locale:alternate'/>
+<meta content='RuleRTR' name='twitter:title'/>
+<meta content='USARIO-TWITTER' name='twitter:site'/>
+<meta content='USARIO-TWITTER' name='twitter:creator'/>
+<meta content='summary_large_image' name='twitter:card'/>
+
+  
+<!-- CSS Style Configuracion -->
+  <link rel="stylesheet" href="/assets/css/loader.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/copiar.css">
+
+<!-- JS prioridad Configuracion -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script src="/assets/js/Onesignalpush.js" defer></script>
+<script src="/assets/js/loader.js" defer></script>
+  
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title> RuleRTR </title>
+
+</head>
+  <body>
+
+<!-- LOADER SIMPLE (espera TODO) -->
+<div id="loader">
+  <div class="loader-box">
+    <div class="loader-bar">
+      <span></span>
+    </div>
+  </div>
+</div>
+    
+<header class="header">
+  <div class="header-container">
+    
+<!-- LOGO IZQUIERDA -->
+<div class="logo">
+  <a href="/">
+    <img src="/assets/img/logo.webp">
+  </a>
+</div>
+
+  <!-- DERECHA -->
+  <div class="actions">
+  <!-- 🔔 CAMPANA -->
+  <button class="icon-btn" id="notifToggle">
+    <i class="fa fa-bell-slash" id="bellIcon"></i>
+  </button>
+  <!-- 🔍 BUSCADOR -->
+  <button class="icon-btn" onclick="abrirBusqueda()">
+    <i class="fa fa-search"></i>
+  </button>
+  <!-- ☰ MENU -->
+  <button class="icon-btn" onclick="toggleMenu()">
+    <i class="fa fa-bars"></i>
+  </button>
+  </div>
+
+<div id="searchBar">
+ <div class="search-container">
+
+  <div class="search-input-wrap">
+    <i class="fa fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Buscar rule..." />
+  </div>
+  <!-- BOTÓN FILTROS -->
+  <a href="/catalogo/" class="filter-btn">
+    <i class="fa fa-sliders"></i>
+    <span>Filtros</span>
+  </a>
+  <!-- TU BOTÓN X -->
+  <button onclick="cerrarBusqueda()">
+    <i class="fa fa-times"></i>
+  </button>
+
+</div>
+</div>
+
+<!-- WARNING -->
+<div id="notifWarning">
+  <span class="close" id="closeWarning">✖</span>
+  <p style="margin:5px 0;">🔕 Notificaciones bloqueadas</p>
+  <a href="https://media.onesignal.com/web-sdk/bell/edge-unblock.png" target="_blank">
+    <img src="https://media.onesignal.com/web-sdk/bell/edge-unblock.png">
+  </a>
+</div>
+
+<!-- TOAST -->
+<div id="notifToast">
+  <span class="close" id="closeToast">✖</span>
+  <p id="toastText" style="margin:5px 0;"></p>
+</div>
+        
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<!-- MENÚ -->
+<div id="menu">
+  <div class="menu-profile">
+    <div class="menu-profile-bg"></div>
+
+    <button class="menu-profile-help" id="menuProfileHelp" type="button" onclick="toggleMenuInstructions(event)" aria-label="Ver instrucciones" aria-expanded="false">
+      <i class="fa fa-exclamation"></i>
+    </button>
+
+    <div class="menu-instructions-panel" id="menuInstructionsPanel" aria-hidden="true">
+      <strong>Instrucciones</strong>
+      <span>Configura tu nombre desde Biblioteca.</span>
+      <span>Toca la foto para cambiar tu perfil.</span>
+      <span>Todo se guarda solo en este dispositivo.</span>
+    </div>
+ 
+    <button class="menu-profile-avatar" id="profilePreview" type="button" onclick="openProfilePanel()" aria-label="Ver perfil">
+      <img id="profilePreviewImg" alt="Foto de perfil">
+      <i class="fa fa-user"></i>
+    </button>
+
+    <div class="menu-profile-info">
+      <p class="menu-profile-kicker">Biblioteca local</p>
+      <p class="menu-profile-title" id="menuLibraryName">Mi biblioteca</p>
+      <p class="menu-profile-subtitle" id="menuLibrarySubtitle">Instrucciones en ‹!›</p>
+    </div>
+
+    <a class="menu-profile-library" href="/biblioteca">
+      <i class="fa fa-bookmark"></i>
+      <span>Ver mi biblioteca</span>
+    </a>
+
+    <input class="profile-file-input" id="profileImageInput" type="file" accept="image/*">
+  </div>
+
+  <div class="menu-links">
+    <a href="/"><i class="fa fa-home"></i>Inicio</a>
+    <a href="/assets/link/Anime"><i class="fa fa-play-circle"></i>Anime</a>
+    <a href="/assets/link/Hentai"><i class="fa fa-heart"></i>Hentai</a>
+    <a href="/assets/link/Doujins"><i class="fa fa-book"></i>Doujins</a>
+    <a href="/assets/link/Rule34"><i class="fa fa-fire"></i>Rule34</a>
+    <a href="/assets/link/ErogeGames"><i class="fa fa-gamepad"></i>EroGames</a>
+    <a href="/assets/link/DMCA"><i class="fa fa-ban"></i>DMCA</a>
+    <a href="/assets/link/Contacto"><i class="fa fa-envelope"></i>Contacto</a>
+    <a href="/assets/link/Donar"><i class="fa fa-paypal"></i>Donar</a>
+    <a href="/assets/link/Donar"><i class="fa fa-gift"></i>Membresias</a>
+  </div>
+
+  <div class="menu-social">
+    <a href="/assets/link/Twitter" title="X/Twitter"><i class="fa fa-twitter"></i></a>
+    <a href="/assets/link/WhatsApp" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+    <a href="/assets/link/Facebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+    <a href="/assets/link/YouTube" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+    <a href="/assets/link/Donar" title="Donar"><i class="fa fa-paypal"></i></a>
+  </div>
+</div>
+    
+ <div id="profilePanel" class="profile-panel" aria-hidden="true">
+  <div class="profile-panel-backdrop" onclick="closeProfilePanel()"></div>
+
+  <div class="profile-card" role="dialog" aria-modal="true" aria-label="Perfil local">
+    <button class="profile-card-close" type="button" onclick="closeProfilePanel()" aria-label="Cerrar">
+      <i class="fa fa-times"></i>
+    </button>
+
+    <div class="profile-card-glow"></div>
+
+    <div class="profile-card-avatar" id="profilePanelPreview">
+      <img id="profilePanelImg" alt="Foto de perfil grande">
+      <i class="fa fa-user"></i>
+    </div>
+
+    <h3 id="profilePanelTitle">Mi biblioteca</h3>
+    <p id="profilePanelSubtitle">Personaliza tu biblioteca en este dispositivo.</p>
+
+    <div class="profile-card-actions">
+      <button type="button" onclick="triggerProfileImagePicker()">
+        <i class="fa fa-camera"></i> Cambiar foto
+      </button>
+      <button type="button" class="danger" onclick="removeProfileImage()">
+        <i class="fa fa-trash"></i> Quitar
+      </button>
+    </div>
+
+  </div>
+</div>
+
+</header>
+   
+
+<!-- JS Script Configuracion -->
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/zoom.js"></script>
+
+
+
+
+
+    
+
+      
+<!-- AQUI COMIENZA EL HTML NORMAL CON JS NORMAL -->
+<div class="container">
+<div class="slider">
+    <div class="slides" id="slides"></div>
+
+    <div class="slider-nav">
+    <button onclick="moveSlide(-1)"><i class="fa-solid fa-angle-left"></i></button>
+    <button onclick="moveSlide(1)"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
+  
+</div>
+
+
+<div class="titulo-seccion">
+  <h2>Episodios</h2>
+  <p>RECIENTEMENTE ACTUALIZADO</p>
+</div>
+
+
+<div class="grid" id="grid"></div>
+
+<script src="app.js"></script>
+
+
+
+<div style="height: 40px;"></div>
+    
+</body>
+</html>
+
+
