@@ -1,5 +1,5 @@
 const GENEROS_DISPONIBLES = [
-  "Ahegao","Christmas","Cumshot","Creampie","Dominación","Milf","Chica Alta","Virgenes","B/N"
+  "Escolares","Harem","Maids","Romance"
 ];
 
 const CATEGORIAS_DISPONIBLES = [
@@ -7,7 +7,7 @@ const CATEGORIAS_DISPONIBLES = [
 ];
 
 const AUTORES_DISPONIBLES = [
-  "Kozuki", "Mogiki Hayami"
+  "Studio 1st"
 ];
 
 const PERSONAJES_DISPONIBLES = [
